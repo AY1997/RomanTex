@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlexiTex: Enhancing Texture Generation via Visual Guidance</title>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+
+      gtag("config", "G-PYVRSFMDRL");
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./static/images/favicon.svg" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./staticcss/bulma.min.css" />
+    <link rel="stylesheet" href="./staticcss/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./staticcss/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./staticcss/index.css" />
+    <link rel="icon" href="./staticimages/test3.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script defer src="./staticjs/fontawesome.all.min.js"></script>
+    <script src="./staticjs/bulma-slider.min.js"></script>
+    <script src="./staticjs/index.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"
+    ></script>
+
+    <style>
+      body {
+        margin: auto;
+        font-family: Arial, sans-serif;
+      }
+
+      nav {
+        position: auto;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: ghostwhite;
+        z-index: 100;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      nav ul {
+        padding: 0;
+        margin: auto;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: auto;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 5px;
+        /*      color: #fff;*/
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      nav ul li a:hover {
+        background-color: #555;
+      }
+
+      /* iframe 容器 */
+      .iframe-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* 提示器 */
+      .tooltip {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        font-size: 12px;
+        white-space: nowrap;
+        transform: translate(-50%, -50%);
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0.2s, opacity 0.2s;
+      }
+
+      /* 鼠标悬停在 iframe 容器时隐藏提示器 */
+      .iframe-container:hover .tooltip {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .title {
+        font-size: 41px;
+      }
+
+      /*  teaser font-size  */
+      .teaserTitle {
+        font-size: 76px;
+      }
+
+      .subTeaserTitle {
+        font-size: 15px;
+      }
+
+      .carousel-indicators {
+        bottom: -26px;
+      }
+
+      .carousel-control.left,
+      .carousel-control.right {
+        background-image: none !important;
+        filter: none !important;
+        width: 20px;
+      }
+
+      .columns {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .column {
+        flex: 1;
+        min-width: 150px;
+      }
+
+      .carousel-indicators ol {
+        width: 100%;
+      }
+
+      .carousel-indicators li {
+        height: 3px !important;
+        border-radius: 0px !important;
+        width: 25%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-0 publication-title">
+                RomanTex: Decoupling 3D-aware Rotary Positional Embedded <br />
+                Multi-Attention Network for Texture Synthesis
+              </h1>
+
+              <div class="is-size-3 publication-authors">
+                <span class="author-block">ICCV 2025</span>
+              </div>
+
+              <!-- <div class="is-size-2 publication-authors">
+                <span class="author-block">Anonymous Submission</span>
+              </div> -->
+              <div class="is-size-3 publication-authors">
+                <span class="author-block">
+                  <a
+                    class="is-size-3 publication-authors"
+                    href="https://patrickddj.github.io/Home/"
+                    >Dadong Jiang</a
+                  ><sup>1,2</sup>,</span
+                >
+                <span class="author-block">
+                  <a
+                    class="is-size-3 publication-authors"
+                    href="https://wi-sc.github.io/xianghui-yang/"
+                    >Xianghui Yang</a
+                  ><sup>2</sup>,
+                </span>
+
+                <span class="author-block">
+                  <a
+                    class="is-size-3 publication-authors"
+                    href="https://maikouuu.github.io/"
+                    >Zibo Zhao</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a class="is-size-3 publication-authors" href="#"
+                    >Sheng Zhang</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a class="is-size-3 publication-authors" href="#">Jiaao Yu</a
+                  ><sup>2</sup>,
+                </span>
+                <br />
+                <span class="author-block">
+                  <a
+                    class="is-size-3 publication-authors"
+                    href="https://zeqiang-lai.github.io/"
+                    >Zeqiang Lai</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a class="is-size-3 publication-authors" href="#"
+                    >Shaoxiong Yang</a
+                  ><sup>2</sup>,
+                </span>
+                <span class="author-block">
+                  <a class="is-size-3 publication-authors" href="#"
+                    >Chunchao Guo</a
+                  ><sup>2 *</sup>,
+                </span>
+                <span class="author-block">
+                  <a
+                    class="is-size-3 publication-authors"
+                    href="https://liaex.github.io/"
+                    >Xiaobo Zhou</a
+                  ><sup>1 *</sup>,
+                </span>
+
+                <span class="author-block">
+                  <a class="is-size-3 publication-authors" href="#">Zhihui Ke</a
+                  ><sup>1</sup>
+                </span>
+              </div>
+              <div class="is-size-3 publication-authors">
+                <span class="author-block"
+                  ><sup>1</sup>Tianjin University
+                </span>
+                <span class="author-block"><sup>2</sup>Tencent Hunyuan </span>
+              </div>
+
+              <div class="publication-links">
+                <span class="link-block">
+                  <a
+                    class="is-size-4 external-link button is-normal is-rounded is-dark"
+                    href="https://arxiv.org/abs/2409.12431"
+                  >
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.1 Banner -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <img src="images/teaser.jpg" width="100%" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.2 Abstract -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-1">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Painting textures for existing geometries is a critical yet
+                labor-intensive process in 3D asset generation. Recent advancements
+                in text-to-image (T2I) models have led to significant 
+                progress in texture generation. Most existing research
+                approaches this task by first generating images in 2D spaces
+                using image diffusion models, followed by a texture baking
+                process to achieve UV texture. However, these methods often
+                struggle to produce high-quality textures due to inconsisten
+                cies among the generated multi-view images, resulting in
+                seams and ghosting artifacts. In contrast, 3D-based texture
+                synthesis methods aim to address these inconsistencies, but
+                they often neglect 2D diffusion model priors, making them
+                challenging to apply to real-world objects To overcome these 
+                limitations, we propose RomanTex, a multiview-based texture
+                generation framework that integrates a multi-attention
+                network with an underlying 3D representation, facilitated
+                by our novel 3D-aware Rotary Positional Embedding. Additionally, 
+                we incorporate a decoupling characteristic in 
+                the multi-attention block to enhance the models robustness 
+                in image-to-texture task, enabling semantically-correct back-view synthesis. Furthermore, we introduce a geometry
+                related Classifier-Free Guidance (CFG) mechanism to further improve the alignment with both geometries and images.
+                Quantitative and qualitative evaluations, along with comprehensive user studies, demonstrate that our method achieves
+                state-of-the-art results in texture quality and consistency.
+              </p>
+
+              <br />
+              <h2 class="title is-4" align="center">
+                <font color="grey"
+                  ><u
+                    >It may take a while to load all textured meshes ...</u
+                  ></font
+                >
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <br />
+
+    <!-- <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-3">It may take a while to load ...</h2>
+        </div>
+      </div>
+    </section> -->
+
+  </body>
+</html>
